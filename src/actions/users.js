@@ -5,20 +5,20 @@ export const LOG_OUT_USER = 'LOG_OUT_USER'
 export function receiveUsers(users) {
     return {
         type: RECEIVE_USERS,
-        users
+        users,
     }
 }
 
 export function logIn(user) {
     return {
-        type: SET_ACTIVE_USER,
-        user
+        type: LOG_IN_USER,
+        user,
     }
 }
 
 export function logOut(user) {
     return {
-        type: SET_ACTIVE_USER,
-        user
+        type: LOG_OUT_USER,
+        user,
     }
 }

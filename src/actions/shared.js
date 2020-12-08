@@ -1,6 +1,6 @@
 import { _getUsers, _getQuestions } from '../_DATA'
-import { RECEIVE_POLLS, receivePolls } from './polls'
-import { RECEIVE_USERS, receiveUsers } from './users'
+import { receivePolls } from './polls'
+import { receiveUsers } from './users'
 
 export function handleInitialData() {
     return (dispatch) => {
