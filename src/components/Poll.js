@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import './Poll.css'
 
-export default class Poll extends Component {
+class Poll extends Component {
     render() {
 
-        const user = { name: "Billy elliot" }
         return (
             <div>
                 <div><span className="name">{user.name}</span> asks:</div>
