@@ -1,25 +1,17 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import '../styles/Nav.css'
-
-export class Nav extends Component {
+import { NavLink } from 'react-router-dom'
+import Login from './Login'
+export default class Nav extends Component {
     render() {
-        const { authedUser } = this.props
         return (
             <nav>
                 <ul className="menu">
-                    <li>Home</li>
-                    <li>Leaderboard</li>
-                    <li>New</li>
+                    <li><NavLink to='/' exact activeClassName='active' >Home</NavLink></li>
+                    <li><NavLink to='/leaderboard' activeClassName='active' >Leaderboard</NavLink></li>
+                    <li><NavLink to='/new' activeClassName='active' >Leaderboard</NavLink></li>
                 </ul>
-                <div className="user">
-                    {authedUser ? authedUser : "Login"}
-                </div>
+                <Login />
             </nav>
         )
     }
 }
-
-const mapStateToProps = ({ authedUser, users }) => ({ authedUser })
-
-export default connect(mapStateToProps)(Nav)

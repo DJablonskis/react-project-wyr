@@ -1,23 +1,35 @@
 import React, { Component } from 'react'
-import '../index.css'
+import '../styles/style.css'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Home from './Home'
-import { Nav } from './Nav'
+import Nav from './Nav'
 import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Leaderboard from './Leaderboard'
+import UnansweredPoll from './UnansweredPoll'
 
-export class App extends Component {
+class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
   render() {
     return (
-
-      <div className="container">
+      <Router >
         <LoadingBar />
-        <Nav />
-        <Home />
-      </div>
+        <div className="container">
+          <Nav />
+          {this.props.authedUser === null ? <h2>LOADING</h2>
+            : <div>
+              <Route path='/' exact component={Home} />
+              <Route path='/poll/:poll' component={UnansweredPoll} />
+              <Route path='/leaderboard' component={Leaderboard} />
+              <Route path='/new' component={Home} />
+            </div>
+
+          }
+        </div>
+      </Router>
     )
   }
 }

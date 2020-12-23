@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Josefin Sans', cursive;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 960px;
+}
+
+nav {
+    display: flex;
+    width:100%;
+    border-bottom: 1px solid black;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu, .pollList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    display:inline-block;
+    padding: 4px 6px;
+}
+
+.leaderboard {
+    padding: 0;
+    margin: 16px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pollList li {
+    border: 1px solid black;
+    margin: 8px;
+    padding: 16px;
+    max-width: 600px;
+}
+
+.pollList button {
+    color: blue;
+    border: none;
+    border-bottom: 2px solid transparent;  
+    border-radius: 0;
+}
+
+.pollList button:hover {
+    border-bottom: 2px solid blue;
+}
+
+.score {
+    display: flex;
+    width: 400px;
+    padding: 8px;
+    margin: 2px;
+    border: 1px solid black;
+    align-items: center;
+    border-radius: 2px;
+}
+.score img {
+    margin: 8px 16px;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid black;
+}
+
+nav .login {
+padding:2px 8px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+}
+
+nav .user {
+    display: flex;
+    align-items: center;
+}
+
+nav .login img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-position: center;
+    object-fit: cover;
+    margin-right: 8px;
+}
+
+button {
+    border-radius: 0;
+    border: 1px solid black;
+    padding: 4px;
+    background: none; 
+    cursor: pointer;
+    font-family: 'Josefin Sans', cursive;
+    font-size: 1rem;
+    padding: 4px;
+    margin: 4px;
+    line-height: 1.3rem;
+}
+
+button.active {
+    background-color: rgb(70, 70, 192);
+    color: white;
+  
+}

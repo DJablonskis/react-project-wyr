@@ -2,6 +2,7 @@ import { _getUsers, _getQuestions } from '../_DATA'
 import { receivePolls } from './polls'
 import { receiveUsers } from './users'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { setAuthedUser } from './authedUser'
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -11,7 +12,6 @@ export function handleInitialData() {
                 dispatch(receiveUsers(users));
                 dispatch(receivePolls(polls));
                 dispatch(hideLoading())
-
             })
         })
     }
