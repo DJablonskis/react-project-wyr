@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import AnsweredPollsList from './AnsweredPollsList'
-import NewPollsList from './NewPollsList'
+import PollsList from './PollsList'
 
 class Home extends Component {
     state = {
@@ -15,17 +14,14 @@ class Home extends Component {
 
     render() {
         const { polls } = this.state
+        const { answered, unanswered } = this.props
         console.log("Home props: ", this.props)
         return (
             <div className="home">
-                <button className={this.state.polls && ("active")} onClick={() => this.changePage(true)}>New polls</button>
-                <button className={!this.state.polls && ("active")} onClick={() => this.changePage(false)}>Polls history</button>
+                <button className={this.state.polls ? "active" : undefined} onClick={() => this.changePage(true)}>New polls</button>
+                <button className={!this.state.polls ? "active" : undefined} onClick={() => this.changePage(false)}>Polls history</button>
                 <div>
-                    {
-                        polls
-                            ? <NewPollsList polls={this.props.questions} />
-                            : <AnsweredPollsList polls={this.props.answers} />
-                    }
+                    <PollsList polls={polls ? unanswered : answered} />
                 </div>
             </div>
         )
@@ -33,9 +29,9 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ authedUser, users, polls }) => {
-    const answers = Object.keys(users[authedUser].answers);
-    const questions = Object.keys(polls).filter((poll) => (!answers.includes(poll)))
-    return { answers, questions, authedUser }
+    const answered = Object.keys(users[authedUser].answers);
+    const unanswered = Object.keys(polls).filter((poll) => (!answered.includes(poll)))
+    return { answered, unanswered }
 }
 
 export default connect(mapStateToProps)(Home)

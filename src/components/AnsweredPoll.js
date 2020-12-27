@@ -11,7 +11,6 @@ class AnsweredPoll extends Component {
         console.log(this.props)
         return (
             <div>
-
                 <h3>{author.name} asked would you rather:</h3>
                 <p>{this.props.poll.optionOne.text}? (chosen by {percentA}%){selection === "a" && (<span>*</span>)}</p>
                 <p>{this.props.poll.optionTwo.text}? (chosen by {percentB}%){selection === "b" && (<span>*</span>)}</p>

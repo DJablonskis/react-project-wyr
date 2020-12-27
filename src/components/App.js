@@ -7,7 +7,7 @@ import Nav from './Nav'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Leaderboard from './Leaderboard'
-import UnansweredPoll from './UnansweredPoll'
+import IndividualPoll from './IndividualPoll'
 
 class App extends Component {
   componentDidMount() {
@@ -22,11 +22,10 @@ class App extends Component {
           {this.props.authedUser === null ? <h2>LOADING</h2>
             : <div>
               <Route path='/' exact component={Home} />
-              <Route path='/poll/:poll' component={UnansweredPoll} />
+              <Route exact path='/poll/:id' component={IndividualPoll} />
               <Route path='/leaderboard' component={Leaderboard} />
               <Route path='/new' component={Home} />
             </div>
-
           }
         </div>
       </Router>

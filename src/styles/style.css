@@ -90,6 +90,18 @@ nav .user {
     align-items: center;
 }
 
+nav .user svg {
+    cursor: pointer;
+}
+
+.poll-selection .selected {
+    border-radius: 0;
+    background-color: green;
+    font-weight: 900;
+    color: white;
+
+}
+
 nav .login img {
     width: 32px;
     height: 32px;
