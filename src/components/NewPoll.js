@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAnswerPoll } from '../actions/shared'
+
 
 class NewPoll extends Component {
 
@@ -14,24 +16,26 @@ class NewPoll extends Component {
     }
 
     render() {
-        const { author, poll } = this.props
+        const { author, poll, dispatch, authedUser } = this.props
         return (
             <div className="poll-selection">
                 <h3>{author.name} asks would you rather:</h3>
-                <button className={this.state.selected === "a" ? "selected" : undefined} type="button" onClick={() => { this.handleSelect("a") }}>{poll.optionOne.text}</button>
+                <button className={this.state.selected === "optionOne" ? "selected" : undefined} type="button" onClick={() => { this.handleSelect("optionOne") }}>{poll.optionOne.text}</button>
                 <span> or </span>
-                <button className={this.state.selected === "b" ? "selected" : undefined} type="button" onClick={() => { this.handleSelect("b") }}>{poll.optionTwo.text}</button>
+                <button className={this.state.selected === "optionTwo" ? "selected" : undefined} type="button" onClick={() => { this.handleSelect("optionTwo") }}>{poll.optionTwo.text}</button>
+                <br />
+                <button disabled={this.state.selected === null} onClick={() => { dispatch(handleAnswerPoll({ authedUser, qid: poll.id, answer: this.state.selected })) }}>Submit selection</button>
             </div >
         )
     }
 }
 
-const mapStateToProps = ({ polls, users }, { poll }) => {
-
+const mapStateToProps = ({ polls, users, authedUser }, { poll }) => {
     const p = polls[poll]
     return {
         poll: p,
         author: users[p.author],
+        authedUser
     }
 }
 

@@ -1,8 +1,7 @@
-import { _getUsers, _getQuestions } from '../_DATA'
-import { receivePolls } from './polls'
-import { receiveUsers } from './users'
+import { _getUsers, _getQuestions, _saveQuestionAnswer } from '../_DATA'
+import { receivePolls, answerPoll } from './polls'
+import { receiveUsers, updateUserAnswers } from './users'
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { setAuthedUser } from './authedUser'
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -16,3 +15,15 @@ export function handleInitialData() {
         })
     }
 }
+
+export function handleAnswerPoll(answer) {
+    return (dispatch) => {
+        dispatch(showLoading())
+        return _saveQuestionAnswer(answer).then(res => {
+            dispatch(answerPoll(answer))
+            dispatch(updateUserAnswers(answer))
+            dispatch(hideLoading())
+        })
+    }
+}
+

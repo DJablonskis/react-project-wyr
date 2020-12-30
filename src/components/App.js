@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Leaderboard from './Leaderboard'
 import IndividualPoll from './IndividualPoll'
+import AddPoll from './AddPoll'
 
 class App extends Component {
   componentDidMount() {
@@ -24,7 +25,7 @@ class App extends Component {
               <Route path='/' exact component={Home} />
               <Route exact path='/poll/:id' component={IndividualPoll} />
               <Route path='/leaderboard' component={Leaderboard} />
-              <Route path='/new' component={Home} />
+              <Route path='/new' component={AddPoll} />
             </div>
           }
         </div>
