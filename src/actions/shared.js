@@ -1,6 +1,6 @@
-import { _getUsers, _getQuestions, _saveQuestionAnswer } from '../_DATA'
-import { receivePolls, answerPoll } from './polls'
-import { receiveUsers, updateUserAnswers } from './users'
+import { _getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion } from '../_DATA'
+import { receivePolls, answerPoll, addPoll } from './polls'
+import { receiveUsers, updateUserAnswers, addPollToAuthor } from './users'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export function handleInitialData() {
@@ -19,11 +19,23 @@ export function handleInitialData() {
 export function handleAnswerPoll(answer) {
     return (dispatch) => {
         dispatch(showLoading())
-        return _saveQuestionAnswer(answer).then(res => {
-            dispatch(answerPoll(answer))
-            dispatch(updateUserAnswers(answer))
+        return _saveQuestionAnswer(answer)
+            .then(dispatch(answerPoll(answer)))
+            .then(dispatch(updateUserAnswers(answer)))
+            .then(dispatch(hideLoading()))
+    }
+}
+
+export function handleAddPoll(poll) {
+
+    return (dispatch) => {
+        dispatch(showLoading())
+        return _saveQuestion(poll).then(res => {
+            dispatch(addPollToAuthor({ author: poll.author, question: res.id }))
+            dispatch(addPoll(res))
             dispatch(hideLoading())
         })
     }
 }
+
 

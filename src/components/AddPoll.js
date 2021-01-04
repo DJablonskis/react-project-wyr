@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleAddPoll } from '../actions/polls'
+import { handleAddPoll } from '../actions/shared'
+import { Redirect } from 'react-router-dom'
 
 
 class AddPoll extends Component {
     state = {
         optionOneText: "",
-        optionTwoText: ""
+        optionTwoText: "",
+        toHome: false
     }
     handleInputChange = (event) => {
         this.setState((state) => ({ ...state, [event.target.name]: event.target.value }))
@@ -15,10 +17,13 @@ class AddPoll extends Component {
         const { author, dispatch } = this.props
         const { optionOneText, optionTwoText } = this.state
         dispatch(handleAddPoll({ author, optionOneText, optionTwoText }))
+        this.setState({ toHome: true })
     }
 
     render() {
-        const { authedUser, dispatch } = this.props
+        if (this.state.toHome === true) {
+            return <Redirect to='/' />
+        }
         return (
             <div>
                 <h2>Creating a new poll</h2>

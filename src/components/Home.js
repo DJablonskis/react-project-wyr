@@ -15,7 +15,6 @@ class Home extends Component {
     render() {
         const { polls } = this.state
         const { answered, unanswered } = this.props
-        console.log("Home props: ", this.props)
         return (
             <div className="home">
                 <button className={this.state.polls ? "active" : undefined} onClick={() => this.changePage(true)}>New polls</button>
@@ -29,8 +28,13 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ authedUser, users, polls }) => {
-    const answered = Object.keys(users[authedUser].answers);
-    const unanswered = Object.keys(polls).filter((poll) => (!answered.includes(poll)))
+
+    const answered = Object.keys(users[authedUser].answers).sort((a, b) => {
+        return polls[b].timestamp - polls[a].timestamp
+    });
+    const unanswered = Object.keys(polls).filter((poll) => (!answered.includes(poll))).sort((a, b) => {
+        return polls[b].timestamp - polls[a].timestamp
+    });
     return { answered, unanswered }
 }
 

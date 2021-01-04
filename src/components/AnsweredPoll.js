@@ -10,10 +10,13 @@ class AnsweredPoll extends Component {
         const percentB = 100 - percentA
         console.log(this.props)
         return (
-            <div>
+            <div style={{ textAlign: 'center' }}>
                 <h3>{author.name} asked would you rather:</h3>
-                <p>{this.props.poll.optionOne.text}? (chosen by {percentA}%){selection === "a" && (<span>*</span>)}</p>
-                <p>{this.props.poll.optionTwo.text}? (chosen by {percentB}%){selection === "b" && (<span>*</span>)}</p>
+                <p>{this.props.poll.optionOne.text}?</p>
+                <p> chosen by {poll.optionOne.votes.length} user(s) {selection === "a" && ("including you")} ({percentA}%)</p>
+                <p>Or</p>
+                <p>{this.props.poll.optionTwo.text}?</p>
+                <p> chosen by {poll.optionTwo.votes.length} user(s) {selection === "b" && ("including you")} ({percentB}%)</p>
             </div>
         )
     }

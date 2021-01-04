@@ -20,23 +20,15 @@ export function answerPoll(answer) {
 }
 
 export function addPoll(poll) {
-    return (dispatch) => {
-
-        return {
-            type: ADD_POLL,
-            poll
-        }
-    }
-
-}
-
-export function handleAddPoll(poll) {
-    return (dispatch) => {
-        dispatch(showLoading())
-        return _saveQuestion(poll)
-            .then(dispatch(addPoll(poll)))
-            .then(dispatch(hideLoading()))
+    return {
+        type: ADD_POLL,
+        poll
     }
 }
+
+
+
+
+
 
 
