@@ -1,5 +1,3 @@
-import { ADD_POLL } from "./polls"
-
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const UPDATE_USER = 'UPDATE_USER'
 export const ADD_QUESTION_TO_USER = 'add_question'

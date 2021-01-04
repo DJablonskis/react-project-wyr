@@ -1,5 +1,3 @@
-import { _saveQuestion } from '../_DATA'
-import { showLoading, hideLoading } from 'react-redux-loading'
 export const RECEIVE_POLLS = 'RECEIVE_POLLS'
 export const ANSWER_POLL = 'ANSWER_POLL'
 export const ADD_POLL = 'ADD_POLL'
