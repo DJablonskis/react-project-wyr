@@ -25,21 +25,28 @@ class AddPoll extends Component {
             return <Redirect to='/' />
         }
         return (
-            <div>
+            <div style={style.centered}>
                 <h2>Create new question:</h2>
-                <span style={style.big}>Would you rather </span>
-                <input style={style.input} name='optionOneText' placeholder="Option one" onChange={this.handleInputChange} value={this.state.optionOneText} type="text" />
-                <span style={style.big}>or</span>
-                <input style={style.input} name='optionTwoText' placeholder="Option two" onChange={this.handleInputChange} value={this.state.optionTwoText} type="text" />
-                <span style={style.big}> ?</span>
-                <br />
-                <button disabled={this.state.optionOneText === "" || this.state.optionTwoText === ""} onClick={this.handleSubmit}>Submit question</button>
+
+                <span>
+                    <span style={style.big}>Would you rather </span>
+                    <input style={style.input} name='optionOneText' placeholder="Option one" onChange={this.handleInputChange} value={this.state.optionOneText} type="text" />
+                    <span style={style.big}>or</span>
+                    <input style={style.input} name='optionTwoText' placeholder="Option two" onChange={this.handleInputChange} value={this.state.optionTwoText} type="text" />
+                    <span style={style.big}> ?</span>
+                </span>
+                <button style={{ marginTop: '16px' }} disabled={this.state.optionOneText === "" || this.state.optionTwoText === ""} onClick={this.handleSubmit}>Submit question</button>
             </div>
         )
     }
 }
 
 const style = {
+    centered: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
     big: {
         fontWeight: '800'
     },

@@ -11,6 +11,19 @@ import IndividualPoll from './IndividualPoll'
 import AddPoll from './AddPoll'
 import Login from '../components/Login'
 
+const style = {
+  login: {
+    display: 'flex',
+    flexDirection: 'column',
+    transition: "opacity 0.6s linear",
+    margin: 'auto',
+    marginTop: '48px',
+    width: '480px',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+}
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
@@ -25,7 +38,7 @@ class App extends Component {
           {
             authedUser === null
               ?
-              <div style={{ opacity: opacity, transition: "opacity 2s linear" }}>
+              <div style={{ ...style.login, opacity: opacity }}>
                 <h2>Please log in</h2>
                 <Login /></div>
               : <div>

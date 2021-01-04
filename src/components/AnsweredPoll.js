@@ -45,7 +45,7 @@ const style = {
         backgroundColor: 'red',
         overflow: 'hidden'
     },
-    avatar: { margin: '8px', width: '20px', height: '20px', objectFit: 'contain', borderRadius: '50%' }
+    avatar: { width: '24px', margin: '8px', height: '24px', borderRadius: '50%', objectFit: 'cover' }
 }
 
 class AnsweredPoll extends Component {
@@ -57,7 +57,7 @@ class AnsweredPoll extends Component {
         const percentB = 100 - percentA
         return (
             <div style={style.container}>
-                <p style={{ display: 'flex', alignItems: 'center' }}>Question by:<img style={style.avatar} src={author.avatar} alt={author.name} />{author.name}</p>
+                <span style={{ display: 'flex', alignItems: 'center' }}>Question by:<img style={style.avatar} src={author.avatar} alt={author.name} />{author.name}</span>
                 <h3>Would you rather:</h3>
                 <div style={style.box}>
                     <p style={{ ...style.option, backgroundColor: 'red' }}>{this.props.poll.optionOne.text}? ({percentA}%)</p>
