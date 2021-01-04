@@ -23,9 +23,9 @@ class App extends Component {
           {this.props.authedUser === null ? <h2>LOADING</h2>
             : <div>
               <Route path='/' exact component={Home} />
-              <Route exact path='/poll/:id' component={IndividualPoll} />
+              <Route exact path='/questions/:id' component={IndividualPoll} />
               <Route path='/leaderboard' component={Leaderboard} />
-              <Route path='/new' component={AddPoll} />
+              <Route path='/add' component={AddPoll} />
             </div>
           }
         </div>
