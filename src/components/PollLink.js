@@ -6,7 +6,7 @@ class PollLink extends Component {
     render() {
         const { poll, optionA, optionB, author } = this.props
         return (
-            <Link to={`/poll/${poll}`}>
+            <Link to={`/questions/${poll}`}>
                 <h3> Would you rather {optionA} or {optionB}?</h3>
                 <h4>By {author}</h4>
             </Link>

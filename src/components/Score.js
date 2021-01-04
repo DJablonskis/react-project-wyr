@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 class Score extends Component {
     render() {
         const { name, answers, questions, avatar } = this.props
-        console.log("Score props: ", this.props)
 
         return (
             <li className="score">
