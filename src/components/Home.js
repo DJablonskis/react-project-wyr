@@ -16,9 +16,12 @@ class Home extends Component {
         const { polls } = this.state
         const { answered, unanswered } = this.props
         return (
-            <div className="home">
-                <button className={this.state.polls ? "active" : undefined} onClick={() => this.changePage(true)}>New polls</button>
-                <button className={!this.state.polls ? "active" : undefined} onClick={() => this.changePage(false)}>Polls history</button>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                <div>
+                    <button className={this.state.polls ? "active" : undefined} onClick={() => this.changePage(true)}>New questions</button>
+                    <button className={!this.state.polls ? "active" : undefined} onClick={() => this.changePage(false)}>Answered questions</button>
+                </div>
+
                 <div>
                     <PollsList polls={polls ? unanswered : answered} />
                 </div>

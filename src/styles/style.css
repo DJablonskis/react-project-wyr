@@ -75,7 +75,6 @@ nav {
     height: 64px;
     object-fit: cover;
     object-position: center;
-    border: 1px solid black;
 }
 
 nav .login {

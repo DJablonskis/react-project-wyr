@@ -26,17 +26,33 @@ class AddPoll extends Component {
         }
         return (
             <div>
-                <h2>Creating a new poll</h2>
-                <span>Would you rather </span>
-                <input name='optionOneText' placeholder="Option one" onChange={this.handleInputChange} value={this.state.optionOneText} type="text" />
-                <span> or </span>
-                <input name='optionTwoText' placeholder="Option two" onChange={this.handleInputChange} value={this.state.optionTwoText} type="text" />
-                <span> ?</span>
+                <h2>Create new question:</h2>
+                <span style={style.big}>Would you rather </span>
+                <input style={style.input} name='optionOneText' placeholder="Option one" onChange={this.handleInputChange} value={this.state.optionOneText} type="text" />
+                <span style={style.big}>or</span>
+                <input style={style.input} name='optionTwoText' placeholder="Option two" onChange={this.handleInputChange} value={this.state.optionTwoText} type="text" />
+                <span style={style.big}> ?</span>
                 <br />
                 <button disabled={this.state.optionOneText === "" || this.state.optionTwoText === ""} onClick={this.handleSubmit}>Submit question</button>
             </div>
         )
     }
+}
+
+const style = {
+    big: {
+        fontWeight: '800'
+    },
+    input: {
+        fontSize: '18px',
+        fontFamily: 'Josefin Sans, cursive',
+        fontWeight: '800',
+        margin: '4px 10px',
+        padding: '6px',
+        border: 'none',
+        borderBottom: '2px solid black'
+    }
+
 }
 
 const mapStateToProps = ({ authedUser }) => ({

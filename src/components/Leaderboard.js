@@ -6,7 +6,6 @@ class Leaderboard extends Component {
 
     render() {
         const { userIDs } = this.props
-        console.log(this.props)
         return (
             <ul className="leaderboard">
                 {userIDs.map((id => (<Score key={id} userID={id} />)))}
